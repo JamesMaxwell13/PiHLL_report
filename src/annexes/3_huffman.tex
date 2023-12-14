@@ -111,7 +111,6 @@ int Huffman_code::read_decoding_file(std::vector<int>& frequency) {
     while(i < count) {
         unsigned char ch;
         ifs.read(reinterpret_cast<char*> (&ch), sizeof(ch));
-
         int f = 0;
         ifs.read(reinterpret_cast<char*> (&f), sizeof(f));
         frequency[ch] = f;
