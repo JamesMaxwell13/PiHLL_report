@@ -1,0 +1,26 @@
+\begin{verbatim}
+Файл box.h:
+
+#include <QtGui>
+#include <QtCore>
+#include "QMessageBox"
+
+class MyBox : public QMessageBox {
+    Q_OBJECT
+
+public:
+    MyBox(QString message);
+};
+
+
+Файл box.cpp:
+
+#include "box.h"
+
+MyBox::MyBox(QString message) {
+    setIcon(QMessageBox::Information);
+    setText(message);
+    setStyleSheet("QLabel { text-align: center; }");
+    addButton(QMessageBox::Ok);
+}
+\end{verbatim}

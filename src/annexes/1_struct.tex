@@ -1,0 +1,66 @@
+\begin{verbatim}
+Файл structs.h:
+
+#include <iostream>
+#include <memory>
+#include <algorithm>
+	
+class Node {
+public:
+    typedef std::shared_ptr<Node> ptr;
+    ptr left{nullptr};
+    ptr right{nullptr};
+    ptr parent{nullptr};
+    Node() = default;
+    Node(unsigned char uch, int f) : ch(uch), frequency(f) {};
+    Node(const std::string& n, int f) : name(n), frequency(f) {};
+    bool operator < (const Node& oth) const;
+    std::string get_name() const ;
+    unsigned char get_byte();
+    int get_frequency() const;
+    void set_frequency(int f);
+    std::string code();
+    void code(const std::string& c);
+    friend std::ostream& operator << (std::ostream &out, Node node);
+private:
+    std::string name{""};
+    unsigned char ch{0};
+    int frequency{0};
+    std::string code_string{""};
+};
+
+
+Файл structs.cpp:
+
+#include "structs.h"
+
+bool Node::operator < (const Node& oth) const {
+    return frequency < oth.frequency;
+}
+std::ostream& operator << (std::ostream &out, Node node) {
+    out << node.get_name() << " - " << node.frequency << std::endl;
+    return out;
+}
+std::string Node::get_name() const {
+    if (ch == 0) { return name; }
+    else {
+        if(ch == 10) { return "\\n"; }
+        return std::string(1, static_cast<char>(ch));
+    }
+}
+unsigned char Node::get_byte() {
+    return ch;
+}
+int Node::get_frequency() const  {
+    return frequency;
+}
+void Node::set_frequency(int f) {
+    frequency = f;
+}
+std::string Node::code() {
+    return code_string;
+}
+void Node::code(const std::string& c) {
+    code_string = c;
+}
+\end{verbatim}

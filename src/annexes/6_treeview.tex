@@ -1,0 +1,30 @@
+\begin{verbatim}
+Файл treeview.h:
+
+#include <QtGui>
+#include <QtCore>
+#include <QTreeView>
+
+class MyTreeView : public QTreeView {
+    Q_OBJECT
+public:
+    QFileSystemModel *dirmodel;
+    MyTreeView(QString path);
+private:
+    QString sPath;
+    int nameWidth = 240;
+};
+
+
+Файл treeview.cpp:
+
+#include "treeview.h"
+
+MyTreeView::MyTreeView(QString path) {
+    dirmodel = new QFileSystemModel(this);
+    dirmodel->setFilter(QDir::NoDotAndDotDot | QDir::AllDirs | QDir::Files);
+    dirmodel->setRootPath(path);
+    setModel(dirmodel);
+    setColumnWidth(0, nameWidth);
+}
+\end{verbatim}

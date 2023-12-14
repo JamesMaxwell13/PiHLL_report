@@ -1,0 +1,29 @@
+\begin{verbatim}
+Файл listview.h:
+
+#include <QtGui>
+#include <QtCore>
+#include <QListview>
+#include <QStandardItemModel>
+
+class MyListView : public QListView {
+    Q_OBJECT
+public:
+    QFileSystemModel *filemodel;
+    MyListView(QString path);
+private:
+    QString sPath;
+};
+
+
+Файл listview.cpp:
+
+#include "listview.h"
+
+MyListView::MyListView(QString path) {
+    filemodel = new QFileSystemModel(this);
+    filemodel->setFilter(QDir::NoDotAndDotDot | QDir::Files);
+    filemodel->setRootPath(path);
+    setModel(filemodel);
+}
+\end{verbatim}
