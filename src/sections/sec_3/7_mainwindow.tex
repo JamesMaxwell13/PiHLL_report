@@ -1,6 +1,6 @@
 \subsubsection{Класс главного окна приложения \texttt{MainWindow}}
 
-Данный класс как и несколько предыдущих наследуется от уже определенного в фреймворке QT класса \texttt{QMainWindow}.
+Данный класс как и несколько предыдущих наследуется от уже определенного в фреймворке QT класса \texttt{QMainWindow}\cite{QT}.
 
 
 
@@ -9,17 +9,17 @@
 
 
 
-\texttt{Ui::MainWindow *u}.
+\texttt{Ui::MainWindow *u}\cite{QT}.
 Представляет переменную описывающую файл mainwindow.ui с помощью которого описывается весь интерфейс и взаимодействие его элементов друг с другом.
 
 
 
-\texttt{QWidget *widget}.
+\texttt{QWidget *widget}\cite{QT}.
 Виджет предназначен для компоновки других графических элементов: кнопок, виджетов \texttt{MyTreeView} и \texttt{MyListView}.
 
 
 
-\texttt{QPushButton *compress} и \texttt{QPushButton *decompress}.
+\texttt{QPushButton *compress} и \texttt{QPushButton *decompress}\cite{QT}.
 Поля кнопок, отвечающих за архивацию и разархивацию выбранных файлов.
 
 
@@ -29,14 +29,14 @@
 
 
 
-\texttt{QHBoxLayout *views}, \texttt{QHBoxLayout *buttons} и \texttt{QVBoxLayout *vlayout}.
+\texttt{QHBoxLayout *views}, \texttt{QHBoxLayout *buttons} и \texttt{QVBoxLayout *vlayout}\cite{QT}.
 Эти объекты автоматически выравнивают все виджеты, добавленные в них. 
 Для кнопок и и файловых виджетов предназначены два разных горизонтальных объекта выравнивания.
 Все вместе эти два объекта состоят в единов вертикальном классе выравнивания.
 
 
 
-\texttt{QTimer *timer}.
+\texttt{QTimer *timer}\cite{QT}.
 Специальный таймер, предопределеный в фреймворке QT.  
 С его помощью регулируется время стостояния нажатых кнопок.
 

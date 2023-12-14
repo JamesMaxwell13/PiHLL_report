@@ -3,13 +3,13 @@
 
 Класс пользовательской очереди \texttt{Queue{\textunderscore}t} предназначен для начального хранения данных.
 В контексте данной курсовой работы этот класс используется при первом проходе по сжимаемому файлу.
-Данная структура данных создана на основе шаблона \texttt{std::priority{\textunderscore}queue}.
-Для шаблона установлен хранимый тип \texttt{Node::ptr}, используемый в основе контейнер \texttt{std::vector<Node::ptr>} и класс компратор \texttt{LowestPriority}.
+Данная структура данных создана на основе шаблона \texttt{std::priority{\textunderscore}queue}\cite{queue}.
+Для шаблона установлен хранимый тип \texttt{Node::ptr}, используемый в основе контейнер \texttt{std::vector<Node::ptr>} и класс компратор \texttt{LowestPriority}\cite{queue}.
 Все эти параметры позволяют создать очередь из узлов \texttt{Node}, в которой все новые значения записываются в приоритетном порядке с наименьшим элементом в верши не очереди.
 
 
 
-\texttt{Std::priority{\textunderscore}queue<Node::ptr, std::vector<Node::ptr>, LowestPriority> q{\textunderscore}data} 
+\texttt{Std::priority{\textunderscore}queue<Node::ptr, std::vector<Node::ptr>, LowestPriority> q{\textunderscore}data}.
 Это главное и единственное поле содержит саму очередь с данными.
 
 
@@ -20,11 +20,11 @@
 
 
 
-\texttt{Void build{\textunderscore}tree()} 
+\texttt{Void build{\textunderscore}tree()}.
 Этот метод на основе уже заполненной очереди строит бинарное дерево по алгоритму, описанному в предыдущем разделе.
 
 
 
-\texttt{Node::ptr top()}
+\texttt{Node::ptr top()}.
 Функция возвращает верхний узел в очереди. 
 Именно он будет вершиной дерева Хаффмана.
