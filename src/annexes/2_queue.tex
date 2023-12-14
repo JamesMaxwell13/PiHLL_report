@@ -42,13 +42,10 @@ void Queue_t::build_tree() {
         Node::ptr y = q_data.top();
         q_data.pop();
         Node::ptr z = std::make_shared<Node>(0, x->get_frequency() + y->get_frequency());
-
         z->left = x;
         z->right = y;
-
         x->parent = z;
         x->parent = z;
-
         q_data.push(z);
     }
 }

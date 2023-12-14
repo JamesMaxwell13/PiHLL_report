@@ -56,13 +56,16 @@ MainWindow::MainWindow(QWidget *parent)
     setWindowTitle("Huffman archiver");
     widget = new QWidget;
     setCentralWidget(widget);
+
     QString sPath = "";
     treeview = new MyTreeView(sPath);
     listview = new MyListView(sPath);
+
     compress = new QPushButton("Compress file", this);
     compress->setCheckable(true);
     decompress = new QPushButton("Decompress file", this);
     decompress->setCheckable(true);
+
     views = new QHBoxLayout;
     views->setSpacing(10);
     views->addWidget(treeview);
@@ -77,6 +80,7 @@ MainWindow::MainWindow(QWidget *parent)
     vlayout->addLayout(buttons);
     vlayout->addLayout(views);
     widget->setLayout(vlayout);
+    
     timer = new QTimer(this);
     connect(treeview, &QTreeView::clicked, this, &MainWindow::on_treeView_clicked);
     connect(listview, &QListView::doubleClicked, this, &MainWindow::on_listView_clicked);
