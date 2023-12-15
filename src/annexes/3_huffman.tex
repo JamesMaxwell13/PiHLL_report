@@ -1,4 +1,5 @@
 \begin{verbatim}
+
 Файл huffman.h:
 
 #include "structs.h"
@@ -27,6 +28,7 @@ public:
     std::string decompress_file();
 };
 
+
 Файл huffman.cpp:
 
 #include "huffman.h"
@@ -43,7 +45,8 @@ int Huffman_code::read_file( std::vector<int>& frequency) {
     ifs.close();
     return 0;
 }
-void Huffman_code::make_code(Node::ptr& node, std::string str, std::vector<std::string>& codes) {
+void Huffman_code::make_code(Node::ptr& node, std::string str, 
+            std::vector<std::string>& codes) {
     if(node->left != nullptr) {
         make_code(node->left, str + '0', codes);
     }
@@ -72,10 +75,12 @@ int Huffman_code::write_file(std::vector<int>& frequency) {
     if(!ofs.is_open()) {
         return 1;
     }
-    unsigned char count = count_if(frequency.begin(), frequency.end(), [](const int& value) { return (value != 0); });
+    unsigned char count = count_if(frequency.begin(), frequency.end(),
+                            [](const int& value) { return (value != 0); });
     ofs.write(reinterpret_cast<char*> (&count), sizeof(count));
     unsigned char index = 0;
-    for_each(frequency.begin(), frequency.end(), [&index, &ofs] (int &value) mutable {
+    for_each(frequency.begin(), frequency.end(), 
+                    [&index, &ofs] (int &value) mutable {
         if(value != 0) {
             ofs.write(reinterpret_cast<char*> (&index), sizeof(index));
             ofs.write(reinterpret_cast<char*> (&value), sizeof(value));
@@ -160,12 +165,13 @@ void Huffman_code::make_char(const Node::ptr& root, std::string&text) {
     }
 }
 int Huffman_code::write_decoding_file(std::string& text) {
-    std::string old_filename = filename.substr(0, filename.rfind(".arch")) ;
+    std::string old_filename = filename.substr(0, filename.rfind(".arch"));
     std::string new_filename;
     std::ifstream exist(old_filename);
     if(exist.is_open()) {
         new_filename = old_filename.substr(0, old_filename.rfind('.'))
-                       + "_1" + old_filename.substr(old_filename.rfind('.'), old_filename.size());
+                       + "_1" + old_filename.substr(old_filename.rfind('.'),    
+                                old_filename.size());
         exist.close();
     }
     else
@@ -188,7 +194,8 @@ bool Huffman_code::is_compressed() {
     return true;
 }
 bool Huffman_code::can_compress() {
-    if(filename.rfind(".arch") == std::string::npos && filename.rfind(".png") == std::string::npos)
+    if(filename.rfind(".arch") == std::string::npos && 
+            filename.rfind(".png") == std::string::npos)
         return true;
     return false;
 }
